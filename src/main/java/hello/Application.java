@@ -10,7 +10,9 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Application {
-
+    //The main() method defers to the SpringApplication helper class, providing QuoteConfiguration.class as an argument
+    // to its run() method. This tells Spring to read the annotation metadata from QuoteConfiguration and to manage it
+    // as a component in the Spring application context.
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }

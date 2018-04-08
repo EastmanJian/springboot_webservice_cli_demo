@@ -12,10 +12,11 @@ import org.springframework.ws.support.MarshallingUtils;
 
 import java.io.IOException;
 
-
+//extend the WebServiceGatewaySupport class to create a web service client
 public class CountryClient extends WebServiceGatewaySupport {
     private static final Logger log = LoggerFactory.getLogger(CountryClient.class);
 
+    //GetCountryResponse and GetCountryResponse are derived from the WSDL and were generated in the JAXB generation process
     public GetCountryResponse getCountry(String country) {
         GetCountryRequest request = new GetCountryRequest();
         request.setName(country);
@@ -35,6 +36,8 @@ public class CountryClient extends WebServiceGatewaySupport {
         }
         System.out.println();
 
+        //send SOAP  web service request and receive response
+        //uses the WebServiceTemplate supplied by the WebServiceGatewaySupport base class to do the actual SOAP exchange
         GetCountryResponse response = (GetCountryResponse) getWebServiceTemplate()
                 .marshalSendAndReceive("http://localhost:8080/ws", request);
 
